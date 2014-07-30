@@ -2,6 +2,8 @@
 
 This is just an iOS coding exercise, first step of an interview process.
 
+[![Build Status](https://travis-ci.org/mokagio/Stream?branch=master)](https://travis-ci.org/mokagio/Stream)
+
 ## The Spec
 
 Write an App.net client to display posts from users. The app should present posts in a
