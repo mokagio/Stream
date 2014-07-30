@@ -18,7 +18,10 @@
 		3F123C0019899C8400299EDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BE519899C8400299EDD /* Foundation.framework */; };
 		3F123C0119899C8400299EDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BE919899C8400299EDD /* UIKit.framework */; };
 		3F123C0919899C8400299EDD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F123C0719899C8400299EDD /* InfoPlist.strings */; };
+		3FEB61501989B6460032D87E /* STRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB614F1989B6460032D87E /* STRParser.m */; };
+		3FEB61521989B65F0032D87E /* STRParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61511989B65F0032D87E /* STRParserSpec.m */; };
 		3FEB61561989B77A0032D87E /* STRPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61551989B77A0032D87E /* STRPost.m */; };
+		3FEB61591989B9180032D87E /* posts_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FEB61581989B9180032D87E /* posts_success.json */; };
 		5D35D25E6C6B464292E2C1AE /* libPods-StreamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF529F52CD540E5B3F5F56E /* libPods-StreamTests.a */; };
 		75EAFD36E07F48BA8EAC0667 /* libPods-Stream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A3515364BA4403997A385D /* libPods-Stream.a */; };
 /* End PBXBuildFile section */
@@ -50,8 +53,12 @@
 		3F123C0619899C8400299EDD /* StreamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StreamTests-Info.plist"; sourceTree = "<group>"; };
 		3F123C0819899C8400299EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F123C141989B39A00299EDD /* StreamTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamTests-Prefix.pch"; sourceTree = "<group>"; };
+		3FEB614E1989B6460032D87E /* STRParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRParser.h; sourceTree = "<group>"; };
+		3FEB614F1989B6460032D87E /* STRParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParser.m; sourceTree = "<group>"; };
+		3FEB61511989B65F0032D87E /* STRParserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParserSpec.m; sourceTree = "<group>"; };
 		3FEB61541989B77A0032D87E /* STRPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRPost.h; sourceTree = "<group>"; };
 		3FEB61551989B77A0032D87E /* STRPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRPost.m; sourceTree = "<group>"; };
+		3FEB61581989B9180032D87E /* posts_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = posts_success.json; sourceTree = "<group>"; };
 		5CA7512BB037498F9BEC9D47 /* Pods-StreamTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamTests.xcconfig"; path = "Pods/Pods-StreamTests.xcconfig"; sourceTree = "<group>"; };
 		8EF529F52CD540E5B3F5F56E /* libPods-StreamTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StreamTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD5D13AFF2F4137996C67B5 /* Pods-Stream.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stream.xcconfig"; path = "Pods/Pods-Stream.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				3FEB61531989B76F0032D87E /* Model */,
+				3FEB614D1989B6360032D87E /* Parser */,
 				3F123BF419899C8400299EDD /* STRAppDelegate.h */,
 				3F123BF519899C8400299EDD /* STRAppDelegate.m */,
 				3F123BF719899C8400299EDD /* Images.xcassets */,
@@ -147,7 +155,9 @@
 		3F123C0419899C8400299EDD /* StreamTests */ = {
 			isa = PBXGroup;
 			children = (
+				3FEB61571989B8EC0032D87E /* Fixtures */,
 				3F123C0519899C8400299EDD /* Supporting Files */,
+				3FEB61511989B65F0032D87E /* STRParserSpec.m */,
 			);
 			path = StreamTests;
 			sourceTree = "<group>";
@@ -162,6 +172,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3FEB614D1989B6360032D87E /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				3FEB614E1989B6460032D87E /* STRParser.h */,
+				3FEB614F1989B6460032D87E /* STRParser.m */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
 		3FEB61531989B76F0032D87E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +188,14 @@
 				3FEB61551989B77A0032D87E /* STRPost.m */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		3FEB61571989B8EC0032D87E /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				3FEB61581989B9180032D87E /* posts_success.json */,
+			);
+			path = Fixtures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F123C0919899C8400299EDD /* InfoPlist.strings in Resources */,
+				3FEB61591989B9180032D87E /* posts_success.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F123BF619899C8400299EDD /* STRAppDelegate.m in Sources */,
+				3FEB61501989B6460032D87E /* STRParser.m in Sources */,
 				3F123BF219899C8400299EDD /* main.m in Sources */,
 				3FEB61561989B77A0032D87E /* STRPost.m in Sources */,
 			);
@@ -359,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FEB61521989B65F0032D87E /* STRParserSpec.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
