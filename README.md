@@ -32,3 +32,14 @@ The endpoint is also [paginated](https://developers.app.net/reference/make-reque
 That seems like a Regexp job to me, but how to make only that piece of text interactive? Maybe using a well placed subview? Or hacking around with the touchable area? 
 
 Wonder no more! There is a pod for that: [TTTAttributedLabel](https://github.com/mattt/TTTAttributedLabel#links-and-data-detection) does this for free, plus another number of useful things.
+
+## The Roadmap
+
+Now that some of the tricky bits of the implementation are more clear to me we can lay down a battle plan.
+
+1. Walking skeleton that loads a finite number of posts from the server, showing only the title.
+2. Complete display of the posts data
+3. Load more feature
+4. Minimal network error handling
+5. A bit of UI
+6. Interactive links
