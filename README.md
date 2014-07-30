@@ -18,3 +18,17 @@ This looks like a rather simple assignment, with a couple of things to verify fi
 * How user friendly the App.net APIs are
 * How _pagination_ friendly the App.net APIs are
 * Is there an easy way to detect links within a `UILabel` and make the interactive?
+
+### A quick look at the App.net APIs
+
+From the spec we gather that what we need from the [App.net APIs](https://developers.app.net/reference/) is just the endpoint to get a list of all posts. Usually this kind of services don't require authentication for a request of this type, wich is good because it would speedup the development.
+
+As hoped there is a `GET` endpoint that doesn't require authentication to retrive _the most recent Posts from the Global stream_. [`/posts/stream/global`](https://developers.app.net/reference/resources/post/streams/#retrieve-the-global-stream).
+
+The endpoint is also [paginated](https://developers.app.net/reference/make-request/pagination/), which is exactly what we need to implement the "load more" feature.
+
+### How to detect links withing the text of a `UILabel`
+
+That seems like a Regexp job to me, but how to make only that piece of text interactive? Maybe using a well placed subview? Or hacking around with the touchable area? 
+
+Wonder no more! There is a pod for that: [TTTAttributedLabel](https://github.com/mattt/TTTAttributedLabel#links-and-data-detection) does this for free, plus another number of useful things.
