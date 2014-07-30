@@ -1,0 +1,8 @@
+language: objective-c
+cache:
+  bundler: true
+before_script:
+  - export LANG=en_US.UTF-8
+# Skip pod install, only run bundle install (they would both run automatically, but we can't as far as I know turn off only one)
+install: bundle install
+script: rake test
