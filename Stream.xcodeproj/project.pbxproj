@@ -18,7 +18,7 @@
 		3F123C0019899C8400299EDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BE519899C8400299EDD /* Foundation.framework */; };
 		3F123C0119899C8400299EDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BE919899C8400299EDD /* UIKit.framework */; };
 		3F123C0919899C8400299EDD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F123C0719899C8400299EDD /* InfoPlist.strings */; };
-		3F123C0B19899C8400299EDD /* StreamTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F123C0A19899C8400299EDD /* StreamTests.m */; };
+		5D35D25E6C6B464292E2C1AE /* libPods-StreamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF529F52CD540E5B3F5F56E /* libPods-StreamTests.a */; };
 		75EAFD36E07F48BA8EAC0667 /* libPods-Stream.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9A3515364BA4403997A385D /* libPods-Stream.a */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +48,9 @@
 		3F123BFE19899C8400299EDD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3F123C0619899C8400299EDD /* StreamTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "StreamTests-Info.plist"; sourceTree = "<group>"; };
 		3F123C0819899C8400299EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		3F123C0A19899C8400299EDD /* StreamTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StreamTests.m; sourceTree = "<group>"; };
+		3F123C141989B39A00299EDD /* StreamTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StreamTests-Prefix.pch"; sourceTree = "<group>"; };
+		5CA7512BB037498F9BEC9D47 /* Pods-StreamTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StreamTests.xcconfig"; path = "Pods/Pods-StreamTests.xcconfig"; sourceTree = "<group>"; };
+		8EF529F52CD540E5B3F5F56E /* libPods-StreamTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StreamTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DFD5D13AFF2F4137996C67B5 /* Pods-Stream.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stream.xcconfig"; path = "Pods/Pods-Stream.xcconfig"; sourceTree = "<group>"; };
 		F9A3515364BA4403997A385D /* libPods-Stream.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Stream.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -72,6 +74,7 @@
 				3F123BFF19899C8400299EDD /* XCTest.framework in Frameworks */,
 				3F123C0119899C8400299EDD /* UIKit.framework in Frameworks */,
 				3F123C0019899C8400299EDD /* Foundation.framework in Frameworks */,
+				5D35D25E6C6B464292E2C1AE /* libPods-StreamTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 				3F123BE419899C8400299EDD /* Frameworks */,
 				3F123BE319899C8400299EDD /* Products */,
 				DFD5D13AFF2F4137996C67B5 /* Pods-Stream.xcconfig */,
+				5CA7512BB037498F9BEC9D47 /* Pods-StreamTests.xcconfig */,
 			);
 			indentWidth = 4;
 			sourceTree = "<group>";
@@ -109,6 +113,7 @@
 				3F123BE919899C8400299EDD /* UIKit.framework */,
 				3F123BFE19899C8400299EDD /* XCTest.framework */,
 				F9A3515364BA4403997A385D /* libPods-Stream.a */,
+				8EF529F52CD540E5B3F5F56E /* libPods-StreamTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -138,7 +143,6 @@
 		3F123C0419899C8400299EDD /* StreamTests */ = {
 			isa = PBXGroup;
 			children = (
-				3F123C0A19899C8400299EDD /* StreamTests.m */,
 				3F123C0519899C8400299EDD /* Supporting Files */,
 			);
 			path = StreamTests;
@@ -149,6 +153,7 @@
 			children = (
 				3F123C0619899C8400299EDD /* StreamTests-Info.plist */,
 				3F123C0719899C8400299EDD /* InfoPlist.strings */,
+				3F123C141989B39A00299EDD /* StreamTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,9 +185,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3F123C1119899C8400299EDD /* Build configuration list for PBXNativeTarget "StreamTests" */;
 			buildPhases = (
+				D97E2E0B955E410E8395793A /* Check Pods Manifest.lock */,
 				3F123BF919899C8400299EDD /* Sources */,
 				3F123BFA19899C8400299EDD /* Frameworks */,
 				3F123BFB19899C8400299EDD /* Resources */,
+				EEC60DA0134244A8AEA359BA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -292,6 +299,36 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		D97E2E0B955E410E8395793A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EEC60DA0134244A8AEA359BA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-StreamTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -308,7 +345,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F123C0B19899C8400299EDD /* StreamTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +504,7 @@
 		};
 		3F123C1219899C8400299EDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CA7512BB037498F9BEC9D47 /* Pods-StreamTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stream.app/Stream";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -476,7 +513,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Stream/Stream-Prefix.pch";
+				GCC_PREFIX_HEADER = "StreamTests/StreamTests-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -490,6 +527,7 @@
 		};
 		3F123C1319899C8400299EDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CA7512BB037498F9BEC9D47 /* Pods-StreamTests.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stream.app/Stream";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -498,7 +536,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Stream/Stream-Prefix.pch";
+				GCC_PREFIX_HEADER = "StreamTests/StreamTests-Prefix.pch";
 				INFOPLIST_FILE = "StreamTests/StreamTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

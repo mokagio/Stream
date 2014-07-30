@@ -4,7 +4,8 @@ target "Stream" do
   pod "CocoaLumberjack", "~> 1.9.1"
 end
 
-target "StreamTests" do
-
+target "StreamTests", :exclusive => true do
+  pod "Specta", "0.2.1"
+  pod "Expecta", "0.3.1"
 end
 
