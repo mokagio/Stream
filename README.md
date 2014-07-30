@@ -43,3 +43,19 @@ Now that some of the tricky bits of the implementation are more clear to me we c
 4. Minimal network error handling
 5. A bit of UI
 6. Interactive links
+
+### Tech choices
+
+App.net seems to have an [iOS (+ Android) SDK that we could use to load the posts](https://github.com/appdotnet/ADNKit/blob/master/ADNKit/ANKClient%2BANKPostStreams.h#L20), but this would result in me using very little of my own coding, and take away all the fun.
+
+We'll need to make requests to the App.net server. To do this I want to use on AFNetworking. It's simple, robust and well tested. Even if it might seem as an overhead for just a couple of requests, I love the API and it's gonna kickstart my network layer.
+
+AFNetworking also provides the `AFURLResponseSerialization` protocol that we could use to write a custom serializer from the JSON response to our model objects. I am not gonna use this, preffering to write the parsing myself. This way an eventual _unplug_ of AFNetworking would be simpler. This also allows me to _show off_ my approach to testing application logic.
+
+As my testing framework, or better stack, I'm gonna use [Specta](https://github.com/specta/specta). I prefer this to XCTest because of the better syntax it has.
+
+I'm gonna do all my views in code. This is probably a controversial topic. My reasons for this are that I don't like all the clicking overhead that IB adds, I don't like to have to check different tabs to fully understand the settings of my views, and I don't like to read XML diffs to see what's changed.
+
+## The development
+
+[This blog post](http://mislav.uniqpath.com/2014/02/hidden-documentation/) I read some time ago inspired me on how to use git to provide extra documentation to the project and it's development. All the details and reasoings behind my implementation can be found in the messages of the commits.
