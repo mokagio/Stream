@@ -20,13 +20,18 @@ describe(@"STRParser", ^{
             expect(post).to.beNil();
         });
 
+        it(@"should return nil if the id is missing", ^{
+            STRPost *post = [parser parsePostFromDictionary:@{ @"not_the_id": @"any string" }];
+            expect(post).to.beNil();
+        });
+
         it(@"should return nil if the text is missing", ^{
-            STRPost *post = [parser parsePostFromDictionary:@{ @"not_the_text": @"any string" }];
+            STRPost *post = [parser parsePostFromDictionary:@{ @"id": @"any_id", @"not_the_text": @"any string" }];
             expect(post).to.beNil();
         });
 
         it(@"should return nil if the user is missing", ^{
-            STRPost *post = [parser parsePostFromDictionary:@{ @"text": @"any string" }];
+            STRPost *post = [parser parsePostFromDictionary:@{ @"id": @"any_id", @"text": @"any string" }];
             expect(post).to.beNil();
         });
     });
@@ -38,6 +43,10 @@ describe(@"STRParser", ^{
         beforeAll(^{
             postDictionary = validPostsDictionary[@"data"][0];
             post = [parser parsePostFromDictionary:postDictionary];
+        });
+
+        it(@"should set the right id", ^{
+            expect(post.uid).to.equal(postDictionary[@"id"]);
         });
 
         it(@"should set the right text", ^{

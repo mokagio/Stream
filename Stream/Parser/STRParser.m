@@ -24,12 +24,16 @@
 {
     if (!dictionary) { return nil; }
 
+    NSString *uid = dictionary[@"id"];
+    if (!uid) { return nil; }
+
     NSString *text = dictionary[@"text"];
     if (!text) { return nil; }
 
     if (!dictionary[@"user"]) { return nil; }
 
     STRPost *post = [[STRPost alloc] init];
+    post.uid = uid;
     post.text = text;
     post.authorName = dictionary[@"user"][@"name"];
     post.authorHandle = dictionary[@"user"][@"username"];
