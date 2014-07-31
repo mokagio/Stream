@@ -14,6 +14,7 @@
                                                NSFontAttributeName: [UIFont openSansBoldFontOfSize:[UIFont labelFontSize]],
                                                NSForegroundColorAttributeName: [UIColor whiteColor],
                                                };
+    self.navigationBar.tintColor = [UIColor whiteColor];
 
     return self;
 }
