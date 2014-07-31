@@ -8,6 +8,7 @@ static CGFloat kPadding = 10;
 @property (nonatomic, strong, readwrite) UILabel *authorLabel;
 @property (nonatomic, strong, readwrite) UILabel *postTextLabel;
 @property (nonatomic, strong, readwrite) UIImageView *avatarImageView;
+@property (nonatomic, strong, readwrite) UILabel *ageLabel;
 
 @end
 
@@ -30,6 +31,9 @@ static CGFloat kPadding = 10;
         self.avatarImageView = [[UIImageView alloc] init];
         self.avatarImageView.backgroundColor = [UIColor orangeColor];
         [self.contentView addSubview:self.avatarImageView];
+
+        self.ageLabel = [[UILabel alloc] init];
+        [self.contentView addSubview:self.ageLabel];
     }
     return self;
 }
@@ -58,7 +62,7 @@ static CGFloat kPadding = 10;
     [self.authorLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview).with.offset(kPadding);
         make.left.equalTo(self.avatarImageView.mas_right).with.offset(kPadding);
-        make.right.equalTo(superview).with.offset(-kPadding);
+        make.right.equalTo(self.ageLabel.mas_left).with.offset(-kPadding);
         make.height.equalTo(@40);
     }];
 
@@ -66,6 +70,12 @@ static CGFloat kPadding = 10;
         make.top.equalTo(self.authorLabel.mas_bottom).with.offset(kPadding);
         make.left.equalTo(self.avatarImageView.mas_right).with.offset(kPadding);
         make.bottom.and.right.equalTo(superview).with.offset(-kPadding);
+    }];
+
+    [self.ageLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(superview).with.offset(-kPadding);
+        make.top.equalTo(superview).with.offset(kPadding);
+        make.height.equalTo(@40);
     }];
 
     [super updateConstraints];
