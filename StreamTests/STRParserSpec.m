@@ -24,14 +24,44 @@ describe(@"STRParser", ^{
             STRPost *post = [parser parsePostFromDictionary:@{ @"not_the_text": @"any string" }];
             expect(post).to.beNil();
         });
+
+        it(@"should return nil if the user is missing", ^{
+            STRPost *post = [parser parsePostFromDictionary:@{ @"text": @"any string" }];
+            expect(post).to.beNil();
+        });
     });
 
     context(@"when parsing a post from a valid dictionary", ^{
-        it(@"should set the right text", ^{
-            NSDictionary *postDictionary = validPostsDictionary[@"data"][0];
-            STRPost *post = [parser parsePostFromDictionary:postDictionary];
+        __block STRPost *post;
+        __block NSDictionary *postDictionary;
 
+        beforeAll(^{
+            postDictionary = validPostsDictionary[@"data"][0];
+            post = [parser parsePostFromDictionary:postDictionary];
+        });
+
+        it(@"should set the right text", ^{
             expect(post.text).to.equal(postDictionary[@"text"]);
+        });
+
+        it(@"should set the right user name", ^{
+            expect(post.authorName).to.equal(postDictionary[@"user"][@"name"]);
+        });
+
+        it(@"should set the right user handle", ^{
+            expect(post.authorHandle).to.equal(postDictionary[@"user"][@"username"]);
+        });
+
+        it(@"should set the right user avatar URL", ^{
+            NSURL *url = [NSURL URLWithString:postDictionary[@"user"][@"avatar_image"][@"url"]];
+            expect(post.authorAvatarURL).to.equal(url);
+        });
+
+        it(@"should set the right post created date", ^{
+            NSDateFormatter *f = [[NSDateFormatter alloc] init];
+            f.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
+            NSDate *date = [f dateFromString:postDictionary[@"created_at"]];
+            expect(post.createdDate).to.equal(date);
         });
     });
 
