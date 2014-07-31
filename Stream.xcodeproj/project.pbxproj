@@ -12,7 +12,6 @@
 		3F123BEA19899C8400299EDD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BE919899C8400299EDD /* UIKit.framework */; };
 		3F123BF019899C8400299EDD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3F123BEE19899C8400299EDD /* InfoPlist.strings */; };
 		3F123BF219899C8400299EDD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F123BF119899C8400299EDD /* main.m */; };
-		3F123BF619899C8400299EDD /* STRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F123BF519899C8400299EDD /* STRAppDelegate.m */; };
 		3F123BF819899C8400299EDD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F123BF719899C8400299EDD /* Images.xcassets */; };
 		3F123BFF19899C8400299EDD /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BFE19899C8400299EDD /* XCTest.framework */; };
 		3F123C0019899C8400299EDD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F123BE519899C8400299EDD /* Foundation.framework */; };
@@ -26,11 +25,12 @@
 		3F3C80C1198A07E300AF36B0 /* STRPostTableViewCellRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C80C0198A07E300AF36B0 /* STRPostTableViewCellRenderer.m */; };
 		3F3DDD92198A171C00DBC2A4 /* STRNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3DDD91198A171C00DBC2A4 /* STRNavigationController.m */; };
 		3FB3BB3A198A27D70017E52A /* STRWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB39198A27D70017E52A /* STRWebViewController.m */; };
-		3FEB61501989B6460032D87E /* STRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB614F1989B6460032D87E /* STRParser.m */; };
+		3FB3BB41198A3A9D0017E52A /* STRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB3D198A3A9D0017E52A /* STRParser.m */; };
+		3FB3BB42198A3A9D0017E52A /* STRNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB40198A3A9D0017E52A /* STRNetworkManager.m */; };
+		3FB3BB46198A3AA30017E52A /* STRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB45198A3AA30017E52A /* STRAppDelegate.m */; };
 		3FEB61521989B65F0032D87E /* STRParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61511989B65F0032D87E /* STRParserSpec.m */; };
 		3FEB61561989B77A0032D87E /* STRPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61551989B77A0032D87E /* STRPost.m */; };
 		3FEB61591989B9180032D87E /* posts_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FEB61581989B9180032D87E /* posts_success.json */; };
-		3FEB615D1989C2A20032D87E /* STRNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB615C1989C2A20032D87E /* STRNetworkManager.m */; };
 		3FEB616A1989D6C00032D87E /* STRAppDotNetProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61691989D6C00032D87E /* STRAppDotNetProxy.m */; };
 		3FEB616C1989D7A00032D87E /* STRAppDotNetProxySpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB616B1989D7A00032D87E /* STRAppDotNetProxySpec.m */; };
 		5D35D25E6C6B464292E2C1AE /* libPods-StreamTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EF529F52CD540E5B3F5F56E /* libPods-StreamTests.a */; };
@@ -56,8 +56,6 @@
 		3F123BEF19899C8400299EDD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3F123BF119899C8400299EDD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3F123BF319899C8400299EDD /* Stream-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stream-Prefix.pch"; sourceTree = "<group>"; };
-		3F123BF419899C8400299EDD /* STRAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STRAppDelegate.h; sourceTree = "<group>"; };
-		3F123BF519899C8400299EDD /* STRAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STRAppDelegate.m; sourceTree = "<group>"; };
 		3F123BF719899C8400299EDD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3F123BFD19899C8400299EDD /* StreamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StreamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F123BFE19899C8400299EDD /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -79,14 +77,16 @@
 		3F3DDD91198A171C00DBC2A4 /* STRNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRNavigationController.m; sourceTree = "<group>"; };
 		3FB3BB38198A27D70017E52A /* STRWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRWebViewController.h; sourceTree = "<group>"; };
 		3FB3BB39198A27D70017E52A /* STRWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRWebViewController.m; sourceTree = "<group>"; };
-		3FEB614E1989B6460032D87E /* STRParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRParser.h; sourceTree = "<group>"; };
-		3FEB614F1989B6460032D87E /* STRParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParser.m; sourceTree = "<group>"; };
+		3FB3BB3C198A3A9D0017E52A /* STRParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRParser.h; sourceTree = "<group>"; };
+		3FB3BB3D198A3A9D0017E52A /* STRParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParser.m; sourceTree = "<group>"; };
+		3FB3BB3F198A3A9D0017E52A /* STRNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRNetworkManager.h; sourceTree = "<group>"; };
+		3FB3BB40198A3A9D0017E52A /* STRNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRNetworkManager.m; sourceTree = "<group>"; };
+		3FB3BB44198A3AA30017E52A /* STRAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRAppDelegate.h; sourceTree = "<group>"; };
+		3FB3BB45198A3AA30017E52A /* STRAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRAppDelegate.m; sourceTree = "<group>"; };
 		3FEB61511989B65F0032D87E /* STRParserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParserSpec.m; sourceTree = "<group>"; };
 		3FEB61541989B77A0032D87E /* STRPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRPost.h; sourceTree = "<group>"; };
 		3FEB61551989B77A0032D87E /* STRPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRPost.m; sourceTree = "<group>"; };
 		3FEB61581989B9180032D87E /* posts_success.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = posts_success.json; sourceTree = "<group>"; };
-		3FEB615B1989C2A20032D87E /* STRNetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRNetworkManager.h; sourceTree = "<group>"; };
-		3FEB615C1989C2A20032D87E /* STRNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRNetworkManager.m; sourceTree = "<group>"; };
 		3FEB61681989D6C00032D87E /* STRAppDotNetProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRAppDotNetProxy.h; sourceTree = "<group>"; };
 		3FEB61691989D6C00032D87E /* STRAppDotNetProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRAppDotNetProxy.m; sourceTree = "<group>"; };
 		3FEB616B1989D7A00032D87E /* STRAppDotNetProxySpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRAppDotNetProxySpec.m; sourceTree = "<group>"; };
@@ -162,18 +162,15 @@
 		3F123BEB19899C8400299EDD /* Stream */ = {
 			isa = PBXGroup;
 			children = (
-				3F3C80BB1989FAAE00AF36B0 /* TableViewDelegates */,
+				3FB3BB43198A3AA30017E52A /* AppDelegate */,
+				3FEB61671989D6B80032D87E /* AppDotNetProxy */,
+				3F123BF719899C8400299EDD /* Images.xcassets */,
+				3FEB61531989B76F0032D87E /* Model */,
+				3F123BEC19899C8400299EDD /* Supporting Files */,
 				3F3C80B71989F83C00AF36B0 /* TableViewDataSources */,
+				3F3C80BB1989FAAE00AF36B0 /* TableViewDelegates */,
 				3F3C80B31989F1CE00AF36B0 /* View */,
 				3F3C80AE1989E48900AF36B0 /* ViewControllers */,
-				3FEB61671989D6B80032D87E /* AppDotNetProxy */,
-				3FEB615A1989C15D0032D87E /* Network */,
-				3FEB61531989B76F0032D87E /* Model */,
-				3FEB614D1989B6360032D87E /* Parser */,
-				3F123BF419899C8400299EDD /* STRAppDelegate.h */,
-				3F123BF519899C8400299EDD /* STRAppDelegate.m */,
-				3F123BF719899C8400299EDD /* Images.xcassets */,
-				3F123BEC19899C8400299EDD /* Supporting Files */,
 			);
 			path = Stream;
 			sourceTree = "<group>";
@@ -276,13 +273,31 @@
 			path = WebViewController;
 			sourceTree = "<group>";
 		};
-		3FEB614D1989B6360032D87E /* Parser */ = {
+		3FB3BB3B198A3A9D0017E52A /* Parser */ = {
 			isa = PBXGroup;
 			children = (
-				3FEB614E1989B6460032D87E /* STRParser.h */,
-				3FEB614F1989B6460032D87E /* STRParser.m */,
+				3FB3BB3C198A3A9D0017E52A /* STRParser.h */,
+				3FB3BB3D198A3A9D0017E52A /* STRParser.m */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		3FB3BB3E198A3A9D0017E52A /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3FB3BB3F198A3A9D0017E52A /* STRNetworkManager.h */,
+				3FB3BB40198A3A9D0017E52A /* STRNetworkManager.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		3FB3BB43198A3AA30017E52A /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				3FB3BB44198A3AA30017E52A /* STRAppDelegate.h */,
+				3FB3BB45198A3AA30017E52A /* STRAppDelegate.m */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		3FEB61531989B76F0032D87E /* Model */ = {
@@ -303,18 +318,11 @@
 			path = Fixtures;
 			sourceTree = "<group>";
 		};
-		3FEB615A1989C15D0032D87E /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				3FEB615B1989C2A20032D87E /* STRNetworkManager.h */,
-				3FEB615C1989C2A20032D87E /* STRNetworkManager.m */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		3FEB61671989D6B80032D87E /* AppDotNetProxy */ = {
 			isa = PBXGroup;
 			children = (
+				3FB3BB3B198A3A9D0017E52A /* Parser */,
+				3FB3BB3E198A3A9D0017E52A /* Network */,
 				3FEB61681989D6C00032D87E /* STRAppDotNetProxy.h */,
 				3FEB61691989D6C00032D87E /* STRAppDotNetProxy.m */,
 			);
@@ -501,18 +509,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F123BF619899C8400299EDD /* STRAppDelegate.m in Sources */,
-				3FEB61501989B6460032D87E /* STRParser.m in Sources */,
+				3FB3BB42198A3A9D0017E52A /* STRNetworkManager.m in Sources */,
 				3F3C80BE1989FAC400AF36B0 /* STRPostsTableViewDelegate.m in Sources */,
 				3F123BF219899C8400299EDD /* main.m in Sources */,
 				3F3C80B61989F1DC00AF36B0 /* STRPostTableViewCell.m in Sources */,
 				3F3DDD92198A171C00DBC2A4 /* STRNavigationController.m in Sources */,
+				3FB3BB41198A3A9D0017E52A /* STRParser.m in Sources */,
 				3FB3BB3A198A27D70017E52A /* STRWebViewController.m in Sources */,
 				3F3C80B21989E4A900AF36B0 /* STRPostsViewController.m in Sources */,
 				3FEB61561989B77A0032D87E /* STRPost.m in Sources */,
+				3FB3BB46198A3AA30017E52A /* STRAppDelegate.m in Sources */,
 				3F3C80BA1989F84A00AF36B0 /* STRPostTableViewDataSource.m in Sources */,
 				3FEB616A1989D6C00032D87E /* STRAppDotNetProxy.m in Sources */,
-				3FEB615D1989C2A20032D87E /* STRNetworkManager.m in Sources */,
 				3F3C80C1198A07E300AF36B0 /* STRPostTableViewCellRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
