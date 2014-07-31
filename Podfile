@@ -2,6 +2,7 @@ platform :ios, "7.0"
 
 target "Stream" do
   pod "CocoaLumberjack", "~> 1.9.1"
+  pod "AFNetworking", "~> 2.3.1"
 end
 
 target "StreamTests", :exclusive => true do

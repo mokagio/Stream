@@ -131,6 +131,7 @@
 		3F123BEB19899C8400299EDD /* Stream */ = {
 			isa = PBXGroup;
 			children = (
+				3FEB615A1989C15D0032D87E /* Network */,
 				3FEB61531989B76F0032D87E /* Model */,
 				3FEB614D1989B6360032D87E /* Parser */,
 				3F123BF419899C8400299EDD /* STRAppDelegate.h */,
@@ -196,6 +197,13 @@
 				3FEB61581989B9180032D87E /* posts_success.json */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		3FEB615A1989C15D0032D87E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
