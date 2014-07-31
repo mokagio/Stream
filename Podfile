@@ -8,6 +8,7 @@ target "Stream" do
   pod "UIAlertView+Blocks", "~> 0.8.1"
   pod "UIColor+FlatColors", "~> 0.0.2" # shameless plug
   pod "OpenSans", "~> 1.0.2"
+  pod "MBProgressHUD", "~> 0.8"
 end
 
 target "StreamTests", :exclusive => true do

@@ -8,6 +8,8 @@
 
 // Utils
 #import <UIAlertView+Blocks.h>
+#import <MBProgressHUD.h>
+#import <UIFont+OpenSans.h>
 
 @interface STRPostsViewController ()
 
@@ -67,13 +69,22 @@
 
 - (void)loadPosts
 {
+    MBProgressHUD *spinner = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    spinner.labelFont = [UIFont openSansFontOfSize:[UIFont systemFontSize]];
+    spinner.labelText = @"loading posts";
+
     [self.appDotNetProxy getPostsWithSuccessBlock:^(NSArray *posts) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
         DDLogInfo(@"Loaded %d new posts", [posts count]);
+
         self.posts = posts;
         self.postsDataSource.posts = posts;
         self.postsDelegate.posts = posts;
         [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
         [UIAlertView showWithTitle:@"Ouch!"
                            message:@"There's been an error...\nMaybe retry in a bit."
                  cancelButtonTitle:@"Later"
