@@ -1,5 +1,8 @@
 #import <Foundation/Foundation.h>
 
+typedef void (^STRAppDotNetProxySuccessBlock)(NSArray *posts);
+typedef void (^STRAppDotNetProxyFailureBlock)(NSError *error);
+
 @interface STRAppDotNetProxy : NSObject
 
 /**
@@ -9,6 +12,9 @@
  *  @return an instance properly configured
  */
 + (instancetype)configuredProxy;
+
+- (void)getPostsWithSuccessBlock:(STRAppDotNetProxySuccessBlock)successBlock
+                    failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock;
 
 @end
 

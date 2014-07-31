@@ -28,4 +28,27 @@ NSString * const STRAppDotNetPostsEndPoint = @"posts/stream/global";
     return proxy;
 }
 
+- (void)getPostsWithSuccessBlock:(STRAppDotNetProxySuccessBlock)successBlock
+                    failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock
+{
+    NSParameterAssert(successBlock);
+    NSParameterAssert(failureBlock);
+    
+    STRNetworkSuccessResponseBlock success = ^(NSDictionary *dictionary) {
+        NSArray *posts = [self.parser parsePostsFromDictionary:dictionary];
+        successBlock(posts);
+    };
+
+    STRNetworkFailureResponseBlock failure = ^(NSError *error) {
+        DDLogError(@"Get posts request failed with error: %@", error);
+
+        failureBlock(error);
+    };
+
+    [self.networkManager runGETRequestToEndPoint:STRAppDotNetPostsEndPoint
+                                  withParameters:nil
+                                    successBlock:success
+                                    failureBlock:failure];
+}
+
 @end

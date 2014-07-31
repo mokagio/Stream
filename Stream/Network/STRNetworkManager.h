@@ -1,6 +1,6 @@
 #import <Foundation/Foundation.h>
 
-typedef void (^STRNeworkSuccessResponseBlock)(NSDictionary *responseDict);
+typedef void (^STRNetworkSuccessResponseBlock)(NSDictionary *responseDict);
 typedef void (^STRNetworkFailureResponseBlock)(NSError *error);
 
 @interface STRNetworkManager : NSObject
@@ -12,7 +12,7 @@ typedef void (^STRNetworkFailureResponseBlock)(NSError *error);
 
 - (void)runGETRequestToEndPoint:(NSString *)endPoint
                  withParameters:(NSDictionary *)parameters
-                   successBlock:(STRNeworkSuccessResponseBlock)successBlock
+                   successBlock:(STRNetworkSuccessResponseBlock)successBlock
                    failureBlock:(STRNetworkFailureResponseBlock)failureBlock;
 
 @end

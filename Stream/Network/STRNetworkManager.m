@@ -32,7 +32,7 @@
 
 - (void)runGETRequestToEndPoint:(NSString *)endPoint
                  withParameters:(NSDictionary *)parameters
-                   successBlock:(STRNeworkSuccessResponseBlock)successBlock
+                   successBlock:(STRNetworkSuccessResponseBlock)successBlock
                    failureBlock:(STRNetworkFailureResponseBlock)failureBlock
 {
     void (^success)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask *task, id responseObject){
