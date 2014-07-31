@@ -8,6 +8,7 @@
 {
     cell.authorLabel.text = [NSString stringWithFormat:@"@%@ %@", post.authorName, post.authorHandle];
     cell.postTextLabel.text = post.text;
+    cell.avatarImageView.image = [UIImage imageNamed:@"AvatarPlaceholder"];
 }
 
 @end

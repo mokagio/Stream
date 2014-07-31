@@ -7,6 +7,7 @@ static CGFloat kPadding = 10;
 
 @property (nonatomic, strong, readwrite) UILabel *authorLabel;
 @property (nonatomic, strong, readwrite) UILabel *postTextLabel;
+@property (nonatomic, strong, readwrite) UIImageView *avatarImageView;
 
 @end
 
@@ -25,6 +26,10 @@ static CGFloat kPadding = 10;
         self.postTextLabel.numberOfLines = 0;
         self.postTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
         [self.contentView addSubview:self.postTextLabel];
+
+        self.avatarImageView = [[UIImageView alloc] init];
+        self.avatarImageView.backgroundColor = [UIColor orangeColor];
+        [self.contentView addSubview:self.avatarImageView];
     }
     return self;
 }
@@ -45,15 +50,21 @@ static CGFloat kPadding = 10;
 {
     UIView *superview = self.contentView;
 
-    [self.authorLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+    [self.avatarImageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.equalTo(superview).with.offset(kPadding);
+        make.width.and.height.equalTo(@46);
+    }];
+
+    [self.authorLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(superview).with.offset(kPadding);
+        make.left.equalTo(self.avatarImageView.mas_right).with.offset(kPadding);
         make.right.equalTo(superview).with.offset(-kPadding);
         make.height.equalTo(@40);
     }];
 
     [self.postTextLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.authorLabel.mas_bottom).with.offset(kPadding);
-        make.left.equalTo(superview).with.offset(kPadding);
+        make.left.equalTo(self.avatarImageView.mas_right).with.offset(kPadding);
         make.bottom.and.right.equalTo(superview).with.offset(-kPadding);
     }];
 

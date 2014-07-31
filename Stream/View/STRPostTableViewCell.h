@@ -4,5 +4,6 @@
 
 @property (nonatomic, strong, readonly) UILabel *authorLabel;
 @property (nonatomic, strong, readonly) UILabel *postTextLabel;
+@property (nonatomic, strong, readonly) UIImageView *avatarImageView;
 
 @end
