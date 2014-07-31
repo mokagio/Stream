@@ -47,6 +47,8 @@ static NSString *kPostCellIdentifier = @"PostCellIdentifier";
     STRPost *post = self.posts[indexPath.row];
     [self.renderer configureCell:cell withPost:post];
 
+    cell.postTextLabel.delegate = self.touchableLabelDelegate;
+
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
     
