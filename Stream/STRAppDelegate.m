@@ -2,6 +2,7 @@
 
 // View Controller
 #import "STRPostsViewController.h"
+#import "STRNavigationController.h"
 
 // Managers & Co.
 #import "STRAppDotNetProxy.h"
@@ -20,7 +21,7 @@
 
     STRAppDotNetProxy *appDotNetProxy = [STRAppDotNetProxy configuredProxy];
     STRPostsViewController *postsViewController = [[STRPostsViewController alloc] initWithAppDotNetProxy:appDotNetProxy];
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postsViewController];
+    STRNavigationController *navigationController = [[STRNavigationController alloc] initWithRootViewController:postsViewController];
 
     self.window.rootViewController = navigationController;
 
