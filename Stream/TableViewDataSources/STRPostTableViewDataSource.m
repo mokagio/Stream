@@ -31,6 +31,7 @@ static NSString *kPostCellIdentifier = @"PostCellIdentifier";
     STRPost *post = self.posts[indexPath.row];
 
     cell.postTextLabel.text = post.text;
+    cell.authorLabel.text = post.authorName;
 
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];

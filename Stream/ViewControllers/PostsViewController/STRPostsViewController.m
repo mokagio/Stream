@@ -48,6 +48,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self.postsDataSource;
     self.tableView.delegate = self.postsDelegate;
+    self.tableView.estimatedRowHeight = 100;
     [self.view addSubview:self.tableView];
 }
 

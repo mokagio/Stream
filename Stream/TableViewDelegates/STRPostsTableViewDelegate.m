@@ -23,6 +23,7 @@
     STRPost *post = self.posts[indexPath.row];
 
     self.offscreenCell.postTextLabel.text = post.text;
+    self.offscreenCell.authorLabel.text = post.authorName;
 
     [self.offscreenCell setNeedsUpdateConstraints];
     [self.offscreenCell updateConstraintsIfNeeded];
