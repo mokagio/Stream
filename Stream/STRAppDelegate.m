@@ -1,5 +1,11 @@
 #import "STRAppDelegate.h"
 
+// View Controller
+#import "STRPostsViewController.h"
+
+// Managers & Co.
+#import "STRAppDotNetProxy.h"
+
 // Power logging
 #import <DDTTYLogger.h>
 #import <DDASLLogger.h>
@@ -11,6 +17,12 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     [self setupDDLog];
+
+    STRAppDotNetProxy *appDotNetProxy = [STRAppDotNetProxy configuredProxy];
+    STRPostsViewController *postsViewController = [[STRPostsViewController alloc] initWithAppDotNetProxy:appDotNetProxy];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:postsViewController];
+
+    self.window.rootViewController = navigationController;
 
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
