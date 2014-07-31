@@ -1,7 +1,8 @@
 #import "STRWebViewController.h"
 #import <Masonry.h>
+#import <MBProgressHUD.h>
 
-@interface STRWebViewController ()
+@interface STRWebViewController () <UIWebViewDelegate>
 
 @property (nonatomic, strong) NSURL *URL;
 @property (nonatomic, strong) UIWebView *webView;
@@ -29,6 +30,7 @@
     [super viewDidLoad];
 
     self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
+    self.webView.delegate = self;
     [self.view addSubview:self.webView];
     [self.webView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.equalTo(self.view);
@@ -39,7 +41,15 @@
 {
     [super viewDidAppear:animated];
 
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.URL]];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 }
 
 @end
