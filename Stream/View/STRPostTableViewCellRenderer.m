@@ -2,6 +2,7 @@
 #import "STRPostTableViewCell.h"
 #import "STRPost.h"
 #import <UIImageView+AFNetworking.h>
+#import <NSDate+DateTools.h>
 
 @implementation STRPostTableViewCellRenderer
 
@@ -11,7 +12,7 @@
     cell.postTextLabel.text = post.text;
     [cell.avatarImageView setImageWithURL:post.authorAvatarURL
                          placeholderImage:[UIImage imageNamed:@"AvatarPlaceholder"]];
-    cell.ageLabel.text = @"dummy";
+    cell.ageLabel.text = [post.createdDate shortTimeAgoSinceNow];
 }
 
 @end
