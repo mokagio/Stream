@@ -2,7 +2,7 @@
 
 This is just an iOS coding exercise, first step of an interview process.
 
-[![Build Status](https://travis-ci.org/mokagio/Stream?branch=master)](https://travis-ci.org/mokagio/Stream)
+[![Build Status](https://travis-ci.org/mokagio/Stream.svg?branch=master)](https://travis-ci.org/mokagio/Stream)
 
 ## The Spec
 
@@ -61,3 +61,31 @@ I'm gonna do all my views in code. This is probably a controversial topic. My re
 ## The development
 
 [This blog post](http://mislav.uniqpath.com/2014/02/hidden-documentation/) I read some time ago inspired me on how to use git to provide extra documentation to the project and it's development. All the details and reasoings behind my implementation can be found in the messages of the commits.
+
+---
+
+## Wrapping things up
+
+This exercise has been quite fun. I clearly underestimated the complexity of the autoresizing table view cells with AutoLayout, as usual.
+
+The desire to experiment and _show off_ different approaches probably resulted in a codebase not completely consistent, but still in my opinion well structured.
+
+There are some where to go next points form here, code wise:
+
+* Remove AFNetworking completely and just rely on `NSURLSession` **or**
+* Push the use of AFNetworking further on with a custom response serializer **or**
+* Use the App.net SDK
+* Use IB for the views rather than the code
+* Group the colors under a palette category to simplify changes
+* Drop the DateTools pod and implement custom _timeago_ feature
+* Profile the performances
+
+From the app point of view interesting developement could be:
+
+* Add a pull to refresh
+* Provide a "Load more" button to load more posts, rather than doing it automatically. This would make it less _network hungry_
+* Allow the user to set the number of posts to download per request, since the APIs allow that.
+
+---
+
+2014 - Giovanni Lodi
