@@ -1,7 +1,10 @@
 #import "STRPostTableViewCell.h"
 #import <Masonry.h>
+#import <UIColor+FlatColors.h>
+#import <UIFont+OpenSans.h>
 
 static CGFloat kPadding = 10;
+static CGFloat kAvatarDiameter = 46;
 
 @interface STRPostTableViewCell ()
 
@@ -21,18 +24,23 @@ static CGFloat kPadding = 10;
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
         self.authorLabel = [[UILabel alloc] init];
+        [self configureLabel:self.authorLabel];
         [self.contentView addSubview:self.authorLabel];
 
         self.postTextLabel = [[UILabel alloc] init];
         self.postTextLabel.numberOfLines = 0;
         self.postTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        [self configureLabel:self.postTextLabel];
         [self.contentView addSubview:self.postTextLabel];
 
         self.avatarImageView = [[UIImageView alloc] init];
         self.avatarImageView.backgroundColor = [UIColor orangeColor];
+        self.avatarImageView.layer.cornerRadius = kAvatarDiameter / 2;
+        self.avatarImageView.clipsToBounds = YES;
         [self.contentView addSubview:self.avatarImageView];
 
         self.ageLabel = [[UILabel alloc] init];
+        [self configureLabel:self.ageLabel];
         [self.contentView addSubview:self.ageLabel];
     }
     return self;
@@ -56,7 +64,7 @@ static CGFloat kPadding = 10;
 
     [self.avatarImageView mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.and.left.equalTo(superview).with.offset(kPadding);
-        make.width.and.height.equalTo(@46);
+        make.width.and.height.mas_equalTo(kAvatarDiameter);
     }];
 
     [self.authorLabel mas_updateConstraints:^(MASConstraintMaker *make) {
@@ -79,6 +87,15 @@ static CGFloat kPadding = 10;
     }];
 
     [super updateConstraints];
+}
+
+#pragma mark - Labels Settings
+
+- (void)configureLabel:(UILabel *)label
+{
+    label.textColor = [UIColor flatWetAsphaltColor];
+    CGFloat size = label.font.pointSize;
+    label.font = [UIFont openSansFontOfSize:size];
 }
 
 @end

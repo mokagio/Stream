@@ -78,9 +78,21 @@
 #define COCOAPODS_VERSION_MINOR_Masonry 5
 #define COCOAPODS_VERSION_PATCH_Masonry 3
 
+// OpenSans
+#define COCOAPODS_POD_AVAILABLE_OpenSans
+#define COCOAPODS_VERSION_MAJOR_OpenSans 1
+#define COCOAPODS_VERSION_MINOR_OpenSans 0
+#define COCOAPODS_VERSION_PATCH_OpenSans 2
+
 // UIAlertView+Blocks
 #define COCOAPODS_POD_AVAILABLE_UIAlertView_Blocks
 #define COCOAPODS_VERSION_MAJOR_UIAlertView_Blocks 0
 #define COCOAPODS_VERSION_MINOR_UIAlertView_Blocks 8
 #define COCOAPODS_VERSION_PATCH_UIAlertView_Blocks 1
+
+// UIColor+FlatColors
+#define COCOAPODS_POD_AVAILABLE_UIColor_FlatColors
+#define COCOAPODS_VERSION_MAJOR_UIColor_FlatColors 0
+#define COCOAPODS_VERSION_MINOR_UIColor_FlatColors 0
+#define COCOAPODS_VERSION_PATCH_UIColor_FlatColors 2
 
