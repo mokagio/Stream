@@ -2,8 +2,9 @@
 #import "STRAppDotNetProxy.h"
 #import "STRPost.h"
 #import "STRPostTableViewCell.h"
+#import "STRPostTableViewDataSource.h"
 
-@interface STRPostsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface STRPostsViewController () <UITableViewDelegate>
 
 @property (nonatomic, strong) STRAppDotNetProxy *appDotNetProxy;
 @property (nonatomic, strong) NSArray *posts;
@@ -11,9 +12,9 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) STRPostTableViewCell *offscreenCell;
 
-@end
+@property (nonatomic, strong) STRPostTableViewDataSource *dataSource;
 
-static NSString *kPostCellIdentifier = @"PostCellIdentifier";
+@end
 
 @implementation STRPostsViewController
 
@@ -26,6 +27,7 @@ static NSString *kPostCellIdentifier = @"PostCellIdentifier";
 
     self.appDotNetProxy = proxy;
     self.title = @"Stream";
+    self.dataSource = [[STRPostTableViewDataSource alloc] init];
 
     return self;
 }
@@ -42,8 +44,7 @@ static NSString *kPostCellIdentifier = @"PostCellIdentifier";
     [super viewDidLoad];
 
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    [self.tableView registerClass:[STRPostTableViewCell class] forCellReuseIdentifier:kPostCellIdentifier];
-    self.tableView.dataSource = self;
+    self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.view addSubview:self.tableView];
 }
@@ -55,43 +56,11 @@ static NSString *kPostCellIdentifier = @"PostCellIdentifier";
     [self.appDotNetProxy getPostsWithSuccessBlock:^(NSArray *posts) {
         DDLogInfo(@"Loaded %d new posts", [posts count]);
         self.posts = posts;
+        self.dataSource.posts = posts;
         [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
         // TODO: alert user
     }];
-}
-
-#pragma mark - UITableViewDataSource
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [self.posts count];
-}
-
-// See http://stackoverflow.com/questions/19132908/auto-layout-constraints-issue-on-ios7-in-uitableviewcell
-// for detailed explanation about what's going on here
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    STRPostTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kPostCellIdentifier
-                                                            forIndexPath:indexPath];
-    if (!cell) {
-        cell = [[STRPostTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:kPostCellIdentifier];
-    }
-
-    STRPost *post = self.posts[indexPath.row];
-
-    cell.postTextLabel.text = post.text;
-
-    [cell setNeedsUpdateConstraints];
-    [cell updateConstraintsIfNeeded];
-
-    return cell;
 }
 
 #pragma mark - UITableViewDelegate
