@@ -36,6 +36,10 @@
     self.title = @"Stream";
     self.postsDataSource = [[STRPostTableViewDataSource alloc] init];
     self.postsDelegate = [[STRPostsTableViewDelegate alloc] init];
+    __weak typeof(self) weakSelf = self;
+    self.postsDelegate.scrollToBottomBlock = ^{
+        [weakSelf loadMorePosts];
+    };
 
     return self;
 }
@@ -69,32 +73,60 @@
 
 - (void)loadPosts
 {
+    [self showLoadingPostsSpinner];
+    [self.appDotNetProxy getPostsWithSuccessBlock:^(NSArray *posts) {
+        [self handleGetPostsSuccess:posts];
+    } failureBlock:^(NSError *error) {
+        [self handleGetPostsFailure:error];
+    }];
+}
+
+- (void)loadMorePosts
+{
+    [self showLoadingPostsSpinner];
+    [self.appDotNetProxy getPostsAfterPost:[self.posts lastObject]
+                          withSuccessBlock:^(NSArray *posts) {
+                              [self handleGetPostsSuccess:posts];
+                          } failureBlock:^(NSError *error) {
+                              [self handleGetPostsFailure:error];
+                          }];
+}
+
+- (void)showLoadingPostsSpinner
+{
     MBProgressHUD *spinner = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     spinner.labelFont = [UIFont openSansFontOfSize:[UIFont systemFontSize]];
     spinner.labelText = @"loading posts";
+}
 
-    [self.appDotNetProxy getPostsWithSuccessBlock:^(NSArray *posts) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+- (void)handleGetPostsSuccess:(NSArray *)posts
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
 
-        DDLogInfo(@"Loaded %d new posts", [posts count]);
+    DDLogInfo(@"Loaded %d new posts", [posts count]);
 
-        self.posts = posts;
-        self.postsDataSource.posts = posts;
-        self.postsDelegate.posts = posts;
-        [self.tableView reloadData];
-    } failureBlock:^(NSError *error) {
-        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    NSMutableArray *mergedPosts = [NSMutableArray arrayWithArray:self.posts];
+    [mergedPosts addObjectsFromArray:posts];
 
-        [UIAlertView showWithTitle:@"Ouch!"
-                           message:@"There's been an error...\nMaybe retry in a bit."
-                 cancelButtonTitle:@"Later"
-                 otherButtonTitles:@[ @"Retry Now" ]
-                          tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-                              if (buttonIndex != [alertView cancelButtonIndex]) {
-                                  [self loadPosts];
-                              }
-                          }];
-    }];
+    self.posts = [NSArray arrayWithArray:mergedPosts];
+    self.postsDataSource.posts = self.posts;
+    self.postsDelegate.posts = self.posts;
+    [self.tableView reloadData];
+}
+
+- (void)handleGetPostsFailure:(NSError *)error
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+
+    [UIAlertView showWithTitle:@"Ouch!"
+                       message:@"There's been an error...\nMaybe retry in a bit."
+             cancelButtonTitle:@"Later"
+             otherButtonTitles:@[ @"Retry Now" ]
+                      tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                          if (buttonIndex != [alertView cancelButtonIndex]) {
+                              [self loadPosts];
+                          }
+                      }];
 }
 
 @end

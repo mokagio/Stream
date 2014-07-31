@@ -49,4 +49,19 @@
     return height;
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    CGFloat reachedHeight = scrollView.contentOffset.y + scrollView.bounds.size.height;
+    CGFloat maxHeight = scrollView.contentSize.height;
+
+    BOOL hasReachedBottom = reachedHeight >= maxHeight;
+
+    if (hasReachedBottom) {
+        if (self.scrollToBottomBlock) { self.scrollToBottomBlock(); }
+    }
+}
+
+
 @end
