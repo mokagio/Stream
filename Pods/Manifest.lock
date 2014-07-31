@@ -32,6 +32,7 @@ PODS:
   - OHHTTPStubs (3.1.4)
   - OpenSans (1.0.2)
   - Specta (0.2.1)
+  - TTTAttributedLabel (1.10.1)
   - UIAlertView+Blocks (0.8.1)
   - UIColor+FlatColors (0.0.2)
 
@@ -45,6 +46,7 @@ DEPENDENCIES:
   - OHHTTPStubs (~> 3.1.4)
   - OpenSans (~> 1.0.2)
   - Specta (= 0.2.1)
+  - TTTAttributedLabel (~> 1.10.1)
   - UIAlertView+Blocks (~> 0.8.1)
   - UIColor+FlatColors (~> 0.0.2)
 
@@ -58,6 +60,7 @@ SPEC CHECKSUMS:
   OHHTTPStubs: 398901e787d9b62ce539a8a3df0b81431a98236a
   OpenSans: 7920678ea50c3c2350b1f10ea5b8990524d239d8
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  TTTAttributedLabel: 94bb04f1e005616002dd2cee0262a0082e533627
   UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
   UIColor+FlatColors: 15506ef6472e26a751033f2f2469283800bcb906
 

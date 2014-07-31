@@ -9,7 +9,7 @@ static CGFloat kAvatarDiameter = 46;
 @interface STRPostTableViewCell ()
 
 @property (nonatomic, strong, readwrite) UILabel *authorLabel;
-@property (nonatomic, strong, readwrite) UILabel *postTextLabel;
+@property (nonatomic, strong, readwrite) TTTAttributedLabel *postTextLabel;
 @property (nonatomic, strong, readwrite) UIImageView *avatarImageView;
 @property (nonatomic, strong, readwrite) UILabel *ageLabel;
 
@@ -27,10 +27,15 @@ static CGFloat kAvatarDiameter = 46;
         [self configureLabel:self.authorLabel];
         [self.contentView addSubview:self.authorLabel];
 
-        self.postTextLabel = [[UILabel alloc] init];
+        self.postTextLabel = [[TTTAttributedLabel alloc] init];
         self.postTextLabel.numberOfLines = 0;
         self.postTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.postTextLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink;
         [self configureLabel:self.postTextLabel];
+        self.postTextLabel.linkAttributes = @{
+                                              NSForegroundColorAttributeName: [UIColor flatAmethystColor],
+                                              NSFontAttributeName: self.postTextLabel.font
+                                              };
         [self.contentView addSubview:self.postTextLabel];
 
         self.avatarImageView = [[UIImageView alloc] init];

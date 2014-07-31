@@ -9,6 +9,7 @@ target "Stream" do
   pod "UIColor+FlatColors", "~> 0.0.2" # shameless plug
   pod "OpenSans", "~> 1.0.2"
   pod "MBProgressHUD", "~> 0.8"
+  pod "TTTAttributedLabel", "~> 1.10.1"
 end
 
 target "StreamTests", :exclusive => true do
