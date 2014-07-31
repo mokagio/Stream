@@ -1,14 +1,25 @@
 #import "STRPostsTableViewDelegate.h"
 #import "STRPostTableViewCell.h"
-#import "STRPost.h"
+#import "STRPostTableViewCellRenderer.h"
 
 @interface STRPostsTableViewDelegate ()
 
 @property (nonatomic, strong) STRPostTableViewCell *offscreenCell;
+@property (nonatomic, strong) STRPostTableViewCellRenderer *renderer;
 
 @end
 
 @implementation STRPostsTableViewDelegate
+
+- (id)init
+{
+    self = [super init];
+    if (!self) { return nil; }
+
+    self.renderer = [[STRPostTableViewCellRenderer alloc] init];
+
+    return self;
+}
 
 #pragma mark - UITableViewDelegate
 
@@ -21,9 +32,7 @@
     }
 
     STRPost *post = self.posts[indexPath.row];
-
-    self.offscreenCell.postTextLabel.text = post.text;
-    self.offscreenCell.authorLabel.text = post.authorName;
+    [self.renderer configureCell:self.offscreenCell withPost:post];
 
     [self.offscreenCell setNeedsUpdateConstraints];
     [self.offscreenCell updateConstraintsIfNeeded];

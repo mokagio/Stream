@@ -23,6 +23,7 @@
 		3F3C80B61989F1DC00AF36B0 /* STRPostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C80B51989F1DB00AF36B0 /* STRPostTableViewCell.m */; };
 		3F3C80BA1989F84A00AF36B0 /* STRPostTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C80B91989F84A00AF36B0 /* STRPostTableViewDataSource.m */; };
 		3F3C80BE1989FAC400AF36B0 /* STRPostsTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C80BD1989FAC400AF36B0 /* STRPostsTableViewDelegate.m */; };
+		3F3C80C1198A07E300AF36B0 /* STRPostTableViewCellRenderer.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C80C0198A07E300AF36B0 /* STRPostTableViewCellRenderer.m */; };
 		3FEB61501989B6460032D87E /* STRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB614F1989B6460032D87E /* STRParser.m */; };
 		3FEB61521989B65F0032D87E /* STRParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61511989B65F0032D87E /* STRParserSpec.m */; };
 		3FEB61561989B77A0032D87E /* STRPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61551989B77A0032D87E /* STRPost.m */; };
@@ -70,6 +71,8 @@
 		3F3C80B91989F84A00AF36B0 /* STRPostTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRPostTableViewDataSource.m; sourceTree = "<group>"; };
 		3F3C80BC1989FAC400AF36B0 /* STRPostsTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRPostsTableViewDelegate.h; sourceTree = "<group>"; };
 		3F3C80BD1989FAC400AF36B0 /* STRPostsTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRPostsTableViewDelegate.m; sourceTree = "<group>"; };
+		3F3C80BF198A07E300AF36B0 /* STRPostTableViewCellRenderer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRPostTableViewCellRenderer.h; sourceTree = "<group>"; };
+		3F3C80C0198A07E300AF36B0 /* STRPostTableViewCellRenderer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRPostTableViewCellRenderer.m; sourceTree = "<group>"; };
 		3FEB614E1989B6460032D87E /* STRParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRParser.h; sourceTree = "<group>"; };
 		3FEB614F1989B6460032D87E /* STRParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParser.m; sourceTree = "<group>"; };
 		3FEB61511989B65F0032D87E /* STRParserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParserSpec.m; sourceTree = "<group>"; };
@@ -223,6 +226,8 @@
 			children = (
 				3F3C80B41989F1DB00AF36B0 /* STRPostTableViewCell.h */,
 				3F3C80B51989F1DB00AF36B0 /* STRPostTableViewCell.m */,
+				3F3C80BF198A07E300AF36B0 /* STRPostTableViewCellRenderer.h */,
+				3F3C80C0198A07E300AF36B0 /* STRPostTableViewCellRenderer.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -480,6 +485,7 @@
 				3F3C80BA1989F84A00AF36B0 /* STRPostTableViewDataSource.m in Sources */,
 				3FEB616A1989D6C00032D87E /* STRAppDotNetProxy.m in Sources */,
 				3FEB615D1989C2A20032D87E /* STRNetworkManager.m in Sources */,
+				3F3C80C1198A07E300AF36B0 /* STRPostTableViewCellRenderer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

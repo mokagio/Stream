@@ -1,10 +1,26 @@
 #import "STRPostTableViewDataSource.h"
 #import "STRPostTableViewCell.h"
-#import "STRPost.h"
+#import "STRPostTableViewCellRenderer.h"
 
 static NSString *kPostCellIdentifier = @"PostCellIdentifier";
 
+@interface STRPostTableViewDataSource ()
+
+@property (nonatomic, strong) STRPostTableViewCellRenderer *renderer;
+
+@end
+
 @implementation STRPostTableViewDataSource
+
+- (id)init
+{
+    self = [super init];
+    if (!self) { return nil; }
+
+    self.renderer = [[STRPostTableViewCellRenderer alloc] init];
+
+    return self;
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -29,9 +45,7 @@ static NSString *kPostCellIdentifier = @"PostCellIdentifier";
     }
 
     STRPost *post = self.posts[indexPath.row];
-
-    cell.postTextLabel.text = post.text;
-    cell.authorLabel.text = post.authorName;
+    [self.renderer configureCell:cell withPost:post];
 
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
