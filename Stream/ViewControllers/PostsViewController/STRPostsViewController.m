@@ -71,11 +71,6 @@
     self.tableView.delegate = self.postsDelegate;
     self.tableView.estimatedRowHeight = 100;
     [self.view addSubview:self.tableView];
-}
-
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
 
     [self loadPosts];
 }
