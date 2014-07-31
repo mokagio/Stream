@@ -49,6 +49,13 @@
     return height;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // we need to do the exact calculations here because of the automatic scroll that the table view
+    // performs after loading more posts
+    return [self tableView:tableView heightForRowAtIndexPath:indexPath];
+}
+
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView

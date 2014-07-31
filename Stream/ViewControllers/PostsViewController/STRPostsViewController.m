@@ -86,7 +86,13 @@
     [self showLoadingPostsSpinner];
     [self.appDotNetProxy getPostsAfterPost:[self.posts lastObject]
                           withSuccessBlock:^(NSArray *posts) {
+                              NSUInteger previousPostsCount = [self.posts count];
                               [self handleGetPostsSuccess:posts];
+                              NSIndexPath *lastOldPostIndexPath = [NSIndexPath indexPathForRow:previousPostsCount - 1
+                                                                                 inSection:0];
+                              [self.tableView scrollToRowAtIndexPath:lastOldPostIndexPath
+                                                    atScrollPosition:UITableViewScrollPositionTop
+                                                            animated:YES];
                           } failureBlock:^(NSError *error) {
                               [self handleGetPostsFailure:error];
                           }];
