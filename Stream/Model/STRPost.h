@@ -2,6 +2,7 @@
 
 @interface STRPost : NSObject
 
+@property (nonatomic, copy) NSString *uid;
 @property (nonatomic, copy) NSString *text;
 @property (nonatomic, copy) NSString *authorName;
 @property (nonatomic, copy) NSString *authorHandle;
