@@ -3,12 +3,13 @@
 #import "STRPost.h"
 #import <UIImageView+AFNetworking.h>
 #import <NSDate+DateTools.h>
+#import <UIFont+OpenSans.h>
 
 @implementation STRPostTableViewCellRenderer
 
 - (void)configureCell:(STRPostTableViewCell *)cell withPost:(STRPost *)post
 {
-    cell.authorLabel.text = [NSString stringWithFormat:@"@%@ %@", post.authorName, post.authorHandle];
+    [cell setAuthorName:post.authorName andHandle:post.authorHandle];
     cell.postTextLabel.text = post.text;
     [cell.avatarImageView setImageWithURL:post.authorAvatarURL
                          placeholderImage:[UIImage imageNamed:@"AvatarPlaceholder"]];

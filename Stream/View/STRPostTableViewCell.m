@@ -47,7 +47,9 @@ static CGFloat kAvatarDiameter = 46;
         [self.contentView addSubview:self.avatarImageView];
 
         self.ageLabel = [[UILabel alloc] init];
-        [self configureLabel:self.ageLabel];
+        self.ageLabel.textColor = [UIColor flatAsbestosColor];
+        CGFloat size = self.ageLabel.font.pointSize;
+        self.ageLabel.font = [UIFont openSansFontOfSize:size];
         [self.contentView addSubview:self.ageLabel];
     }
     return self;
@@ -103,6 +105,29 @@ static CGFloat kAvatarDiameter = 46;
     label.textColor = [UIColor flatWetAsphaltColor];
     CGFloat size = label.font.pointSize;
     label.font = [UIFont openSansFontOfSize:size];
+}
+
+- (void)setAuthorName:(NSString *)name andHandle:(NSString *)handle
+{
+    NSString *authorText = @"";
+
+    NSString *atHandle = nil;
+    if (handle) {
+        atHandle = [NSString stringWithFormat:@"@%@ ", handle];
+        authorText = [authorText stringByAppendingString:atHandle];
+    }
+
+    if (name) {
+        authorText = [authorText stringByAppendingString:name];
+    }
+
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:authorText];
+
+    NSRange handleRange = [authorText rangeOfString:handle];
+    CGFloat size = self.authorLabel.font.pointSize;
+    [attributedText setAttributes:@{ NSFontAttributeName: [UIFont openSansBoldFontOfSize:size] } range:handleRange];
+
+    self.authorLabel.attributedText = attributedText;
 }
 
 @end

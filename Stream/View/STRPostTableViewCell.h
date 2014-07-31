@@ -8,4 +8,6 @@
 @property (nonatomic, strong, readonly) UIImageView *avatarImageView;
 @property (nonatomic, strong, readonly) UILabel *ageLabel;
 
+- (void)setAuthorName:(NSString *)name andHandle:(NSString *)handle;
+
 @end
