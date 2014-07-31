@@ -6,4 +6,6 @@
 
 - (STRPost *)parsePostFromDictionary:(NSDictionary *)dictionary;
 
+- (NSArray *)parsePostsFromDictionary:(NSDictionary *)dictionary;
+
 @end

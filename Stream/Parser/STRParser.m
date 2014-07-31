@@ -16,4 +16,20 @@
     return post;
 }
 
+- (NSArray *)parsePostsFromDictionary:(NSDictionary *)dictionary
+{
+    if (!dictionary) { return nil; }
+
+    NSArray *rawPosts = dictionary[@"data"];
+    if (!rawPosts) { return nil; }
+
+    NSMutableArray *posts = [NSMutableArray array];
+    [rawPosts enumerateObjectsUsingBlock:^(NSDictionary *rawPost, NSUInteger idx, BOOL *stop) {
+        STRPost *post = [self parsePostFromDictionary:rawPost];
+        [posts addObject:post];
+    }];
+
+    return [NSArray arrayWithArray:posts];
+}
+
 @end
