@@ -8,5 +8,6 @@ end
 target "StreamTests", :exclusive => true do
   pod "Specta", "0.2.1"
   pod "Expecta", "0.3.1"
+  pod "OHHTTPStubs", "~> 3.1.4"
 end
 
