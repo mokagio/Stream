@@ -30,6 +30,7 @@ PODS:
   - Masonry (0.5.3)
   - OHHTTPStubs (3.1.4)
   - Specta (0.2.1)
+  - UIAlertView+Blocks (0.8.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.3.1)
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - Masonry (~> 0.5.3)
   - OHHTTPStubs (~> 3.1.4)
   - Specta (= 0.2.1)
+  - UIAlertView+Blocks (~> 0.8.1)
 
 SPEC CHECKSUMS:
   AFNetworking: 6d7b76aa5d04c8c37daad3eef4b7e3f2a7620da3
@@ -48,5 +50,6 @@ SPEC CHECKSUMS:
   Masonry: 35368c2ca9577ca87722c12fc52c4bad9b1c1516
   OHHTTPStubs: 398901e787d9b62ce539a8a3df0b81431a98236a
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
+  UIAlertView+Blocks: 0b749f1f7bd5131ff2233b30a406c1585a7171b2
 
 COCOAPODS: 0.33.1

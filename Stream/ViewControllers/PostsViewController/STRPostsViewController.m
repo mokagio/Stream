@@ -1,9 +1,13 @@
 #import "STRPostsViewController.h"
 #import "STRAppDotNetProxy.h"
-#import "STRPost.h"
+
+// Posts table view
 #import "STRPostTableViewCell.h"
 #import "STRPostTableViewDataSource.h"
 #import "STRPostsTableViewDelegate.h"
+
+// Utils
+#import <UIAlertView+Blocks.h>
 
 @interface STRPostsViewController ()
 
@@ -56,6 +60,13 @@
 {
     [super viewWillAppear:animated];
 
+    [self loadPosts];
+}
+
+#pragma mark - Loading Posts
+
+- (void)loadPosts
+{
     [self.appDotNetProxy getPostsWithSuccessBlock:^(NSArray *posts) {
         DDLogInfo(@"Loaded %d new posts", [posts count]);
         self.posts = posts;
@@ -63,7 +74,15 @@
         self.postsDelegate.posts = posts;
         [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
-        // TODO: alert user
+        [UIAlertView showWithTitle:@"Ouch!"
+                           message:@"There's been an error...\nMaybe retry in a bit."
+                 cancelButtonTitle:@"Later"
+                 otherButtonTitles:@[ @"Retry Now" ]
+                          tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
+                              if (buttonIndex != [alertView cancelButtonIndex]) {
+                                  [self loadPosts];
+                              }
+                          }];
     }];
 }
 
