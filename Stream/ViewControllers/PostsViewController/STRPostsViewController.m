@@ -3,16 +3,17 @@
 #import "STRPost.h"
 #import "STRPostTableViewCell.h"
 #import "STRPostTableViewDataSource.h"
+#import "STRPostsTableViewDelegate.h"
 
-@interface STRPostsViewController () <UITableViewDelegate>
+@interface STRPostsViewController ()
 
 @property (nonatomic, strong) STRAppDotNetProxy *appDotNetProxy;
 @property (nonatomic, strong) NSArray *posts;
 
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) STRPostTableViewCell *offscreenCell;
 
-@property (nonatomic, strong) STRPostTableViewDataSource *dataSource;
+@property (nonatomic, strong) STRPostTableViewDataSource *postsDataSource;
+@property (nonatomic, strong) STRPostsTableViewDelegate *postsDelegate;
 
 @end
 
@@ -27,7 +28,8 @@
 
     self.appDotNetProxy = proxy;
     self.title = @"Stream";
-    self.dataSource = [[STRPostTableViewDataSource alloc] init];
+    self.postsDataSource = [[STRPostTableViewDataSource alloc] init];
+    self.postsDelegate = [[STRPostsTableViewDelegate alloc] init];
 
     return self;
 }
@@ -44,8 +46,8 @@
     [super viewDidLoad];
 
     self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    self.tableView.dataSource = self.dataSource;
-    self.tableView.delegate = self;
+    self.tableView.dataSource = self.postsDataSource;
+    self.tableView.delegate = self.postsDelegate;
     [self.view addSubview:self.tableView];
 }
 
@@ -56,40 +58,12 @@
     [self.appDotNetProxy getPostsWithSuccessBlock:^(NSArray *posts) {
         DDLogInfo(@"Loaded %d new posts", [posts count]);
         self.posts = posts;
-        self.dataSource.posts = posts;
+        self.postsDataSource.posts = posts;
+        self.postsDelegate.posts = posts;
         [self.tableView reloadData];
     } failureBlock:^(NSError *error) {
         // TODO: alert user
     }];
-}
-
-#pragma mark - UITableViewDelegate
-
-// See http://stackoverflow.com/questions/19132908/auto-layout-constraints-issue-on-ios7-in-uitableviewcell
-// for detailed explanation about what's going on here
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (!self.offscreenCell) {
-        self.offscreenCell = [[STRPostTableViewCell alloc] init];
-    }
-
-    STRPost *post = self.posts[indexPath.row];
-
-    self.offscreenCell.postTextLabel.text = post.text;
-
-    [self.offscreenCell setNeedsUpdateConstraints];
-    [self.offscreenCell updateConstraintsIfNeeded];
-
-    self.offscreenCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), CGRectGetHeight(self.offscreenCell.bounds));
-
-    [self.offscreenCell setNeedsLayout];
-    [self.offscreenCell layoutIfNeeded];
-
-    CGFloat height = [self.offscreenCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    // this makes up for the cell separator
-    height += 1.0f;
-    
-    return height;
 }
 
 @end
