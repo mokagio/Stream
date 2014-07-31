@@ -24,6 +24,8 @@ static CGFloat kAvatarDiameter = 46;
         self.contentView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
 
         self.authorLabel = [[UILabel alloc] init];
+        [self.authorLabel setContentCompressionResistancePriority:UILayoutPriorityDefaultLow
+                                                          forAxis:UILayoutConstraintAxisHorizontal];
         [self configureLabel:self.authorLabel];
         [self.contentView addSubview:self.authorLabel];
 
@@ -75,7 +77,7 @@ static CGFloat kAvatarDiameter = 46;
     [self.authorLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(superview).with.offset(kPadding);
         make.left.equalTo(self.avatarImageView.mas_right).with.offset(kPadding);
-        make.right.equalTo(self.ageLabel.mas_left).with.offset(-kPadding);
+        make.right.equalTo(self.ageLabel.mas_left).with.offset(-kPadding).with.priorityHigh();
         make.height.equalTo(@40);
     }];
 
