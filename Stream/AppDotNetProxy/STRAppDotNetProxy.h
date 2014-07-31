@@ -3,6 +3,8 @@
 typedef void (^STRAppDotNetProxySuccessBlock)(NSArray *posts);
 typedef void (^STRAppDotNetProxyFailureBlock)(NSError *error);
 
+@class STRPost;
+
 @interface STRAppDotNetProxy : NSObject
 
 /**
@@ -15,6 +17,14 @@ typedef void (^STRAppDotNetProxyFailureBlock)(NSError *error);
 
 - (void)getPostsWithSuccessBlock:(STRAppDotNetProxySuccessBlock)successBlock
                     failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock;
+
+- (void)getPostsAfterPost:(STRPost *)post
+         withSuccessBlock:(STRAppDotNetProxySuccessBlock)successBlock
+             failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock;
+
+- (void)getPostsWithParameters:(NSDictionary *)parameters
+                  successBlock:(STRAppDotNetProxySuccessBlock)successBlock
+                  failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock;
 
 @end
 

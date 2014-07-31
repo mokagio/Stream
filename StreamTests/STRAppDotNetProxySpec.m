@@ -35,11 +35,13 @@ describe(@"STRAppDotNetProxy", ^{
                 }];
 
                 __block NSArray *posts = nil;
-                [proxy getPostsWithSuccessBlock:^(NSArray *_posts) {
-                    posts = _posts;
-                } failureBlock:^(NSError *error) {
-                    // do nothing
-                }];
+                NSDictionary *parameters = @{ @"any_key": @"any_value" };
+                [proxy getPostsWithParameters:parameters
+                                 successBlock:^(NSArray *_posts) {
+                                     posts = _posts;
+                                 } failureBlock:^(NSError *error) {
+                                     // do nothing
+                                 }];
 
                 expect(posts).willNot.beNil();
                 [posts enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -59,11 +61,13 @@ describe(@"STRAppDotNetProxy", ^{
                 }];
 
                 __block NSError *error = nil;
-                [proxy getPostsWithSuccessBlock:^(NSArray *posts) {
-                    // do nothing
-                } failureBlock:^(NSError *e) {
-                    error = e;
-                }];
+                NSDictionary *parameters = @{ @"any_key": @"any_value" };
+                [proxy getPostsWithParameters:parameters
+                                 successBlock:^(NSArray *posts) {
+                                     // do nothing
+                                 } failureBlock:^(NSError *e) {
+                                     error = e;
+                                 }];
                 // Calling e _error causes a shadow variable warning.
                 // That's funny because that's not happening with posts and _posts in the spec above
                 // o.O

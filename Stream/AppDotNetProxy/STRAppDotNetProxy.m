@@ -4,6 +4,8 @@
 #import "STRNetworkManager.h"
 #import "STRParser.h"
 
+#import "STRPost.h"
+
 NSString * const STRAppDotNetBaseURL = @"https://api.app.net";
 NSString * const STRAppDotNetPostsEndPoint = @"posts/stream/global";
 
@@ -28,12 +30,29 @@ NSString * const STRAppDotNetPostsEndPoint = @"posts/stream/global";
     return proxy;
 }
 
+#pragma mark - Get Posts
+
 - (void)getPostsWithSuccessBlock:(STRAppDotNetProxySuccessBlock)successBlock
                     failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock
 {
+    [self getPostsWithParameters:nil successBlock:successBlock failureBlock:failureBlock];
+}
+
+- (void)getPostsAfterPost:(STRPost *)post
+         withSuccessBlock:(STRAppDotNetProxySuccessBlock)successBlock
+             failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock
+{
+    NSDictionary *parameters = @{ @"before_id": post.uid };
+    [self getPostsWithParameters:parameters successBlock:successBlock failureBlock:failureBlock];
+}
+
+- (void)getPostsWithParameters:(NSDictionary *)parameters
+                  successBlock:(STRAppDotNetProxySuccessBlock)successBlock
+                  failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock
+{
     NSParameterAssert(successBlock);
     NSParameterAssert(failureBlock);
-    
+
     STRNetworkSuccessResponseBlock success = ^(NSDictionary *dictionary) {
         NSArray *posts = [self.parser parsePostsFromDictionary:dictionary];
         successBlock(posts);
@@ -46,7 +65,7 @@ NSString * const STRAppDotNetPostsEndPoint = @"posts/stream/global";
     };
 
     [self.networkManager runGETRequestToEndPoint:STRAppDotNetPostsEndPoint
-                                  withParameters:nil
+                                  withParameters:parameters
                                     successBlock:success
                                     failureBlock:failure];
 }
