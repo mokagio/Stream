@@ -3,7 +3,8 @@
 
 @interface STRNetworkManager ()
 
-@property (nonatomic, strong) AFHTTPSessionManager *sessionManager;
+@property (nonatomic, strong) NSURL *baseURL;
+@property (nonatomic, strong) NSURLSession *session;
 
 @end
 
@@ -16,11 +17,10 @@
     self = [super init];
     if (!self) { return nil; }
 
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.baseURL = url;
 
-    self.sessionManager = [[AFHTTPSessionManager alloc] initWithBaseURL:url
-                                                   sessionConfiguration:configuration];
-    self.sessionManager.requestSerializer = [[AFJSONRequestSerializer alloc] init];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    self.session = [NSURLSession sessionWithConfiguration:configuration];
 
     return self;
 }
@@ -35,18 +35,39 @@
                    successBlock:(STRNetworkSuccessResponseBlock)successBlock
                    failureBlock:(STRNetworkFailureResponseBlock)failureBlock
 {
-    void (^success)(NSURLSessionDataTask *task, id responseObject) = ^(NSURLSessionDataTask *task, id responseObject){
-        successBlock(responseObject);
-    };
+    __block NSURL *url = [self.baseURL URLByAppendingPathComponent:endPoint];
+    __block NSUInteger i = 0;
+    // TODO: we are assuming all the parameters are in NSString format here
+    [parameters enumerateKeysAndObjectsUsingBlock:^(NSString* key, NSString *value, BOOL *stop) {
+        NSString *prefix = i == 0 ? @"?" : @"&";
+        NSString *parameter = [NSString stringWithFormat:@"%@%@=%@", prefix, key, value];
 
-    void (^failure)(NSURLSessionDataTask *task, NSError *error) = ^(NSURLSessionDataTask *task, NSError *error){
-        failureBlock(error);
-    };
+        url = [url URLByAppendingPathComponent:parameter];
 
-    [self.sessionManager GET:endPoint
-                  parameters:parameters
-                     success:success
-                     failure:failure];
+        i++;
+    }];
+    NSMutableURLRequest *request = [NSURLRequest requestWithURL:url];
+
+    NSURLSessionDataTask *dataTask = [self.session dataTaskWithRequest:request
+                                                     completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+                                                         if (error) {
+                                                             failureBlock(error);
+                                                             return;
+                                                         }
+
+                                                         NSError *serializationError = nil;
+                                                         NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data
+                                                                                                              options:kNilOptions
+                                                                                                                error:&serializationError];
+
+                                                         if (serializationError) {
+                                                             failureBlock(serializationError);
+                                                             return;
+                                                         }
+
+                                                         successBlock(json);
+                                                 }];
+    [dataTask resume];
 }
 
 @end
