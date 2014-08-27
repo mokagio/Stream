@@ -70,4 +70,20 @@ NSString * const STRAppDotNetPostsEndPoint = @"posts/stream/global";
                                     failureBlock:failure];
 }
 
+- (void)getAvatarImageForPost:(STRPost *)post
+             withSuccessBlock:(STRAppDotNetProxyImageSuccessBlock)successBlock
+                 failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock
+{
+    NSParameterAssert(successBlock);
+    NSParameterAssert(failureBlock);
+
+    [self.networkManager runDownloadRequestToURL:post.authorAvatarURL
+                                    successBlock:^(NSData *responseData) {
+                                        UIImage *image = [UIImage imageWithData:responseData];
+                                        successBlock(image);
+                                    } failureBlock:^(NSError *error) {
+                                        failureBlock(error);
+                                    }];
+}
+
 @end

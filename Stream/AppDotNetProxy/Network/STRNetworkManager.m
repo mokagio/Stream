@@ -70,4 +70,21 @@
     [dataTask resume];
 }
 
+- (void)runDownloadRequestToURL:(NSURL *)url
+                   successBlock:(STRNetworkDownloadSuccessResponseBlock)successBlock
+                   failureBlock:(STRNetworkFailureResponseBlock)failureBlock
+{
+    NSURLSessionDownloadTask *downloadTask = [self.session downloadTaskWithURL:url completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
+        if (error) {
+            failureBlock(error);
+            return;
+        }
+
+        NSData *data = [NSData dataWithContentsOfURL:location];
+        successBlock(data);
+    }];
+
+    [downloadTask resume];
+}
+
 @end

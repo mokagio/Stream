@@ -1,7 +1,8 @@
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 typedef void (^STRAppDotNetProxySuccessBlock)(NSArray *posts);
 typedef void (^STRAppDotNetProxyFailureBlock)(NSError *error);
+typedef void (^STRAppDotNetProxyImageSuccessBlock)(UIImage *image);
 
 @class STRPost;
 
@@ -25,6 +26,10 @@ typedef void (^STRAppDotNetProxyFailureBlock)(NSError *error);
 - (void)getPostsWithParameters:(NSDictionary *)parameters
                   successBlock:(STRAppDotNetProxySuccessBlock)successBlock
                   failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock;
+
+- (void)getAvatarImageForPost:(STRPost *)post
+             withSuccessBlock:(STRAppDotNetProxyImageSuccessBlock)successBlock
+                 failureBlock:(STRAppDotNetProxyFailureBlock)failureBlock;
 
 @end
 

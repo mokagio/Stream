@@ -28,6 +28,7 @@
 		3FB3BB41198A3A9D0017E52A /* STRParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB3D198A3A9D0017E52A /* STRParser.m */; };
 		3FB3BB42198A3A9D0017E52A /* STRNetworkManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB40198A3A9D0017E52A /* STRNetworkManager.m */; };
 		3FB3BB46198A3AA30017E52A /* STRAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FB3BB45198A3AA30017E52A /* STRAppDelegate.m */; };
+		3FDCFE6219ADC6540005584E /* michelangelo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FDCFE6119ADC6540005584E /* michelangelo.png */; };
 		3FEB61521989B65F0032D87E /* STRParserSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61511989B65F0032D87E /* STRParserSpec.m */; };
 		3FEB61561989B77A0032D87E /* STRPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEB61551989B77A0032D87E /* STRPost.m */; };
 		3FEB61591989B9180032D87E /* posts_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 3FEB61581989B9180032D87E /* posts_success.json */; };
@@ -83,6 +84,7 @@
 		3FB3BB40198A3A9D0017E52A /* STRNetworkManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRNetworkManager.m; sourceTree = "<group>"; };
 		3FB3BB44198A3AA30017E52A /* STRAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRAppDelegate.h; sourceTree = "<group>"; };
 		3FB3BB45198A3AA30017E52A /* STRAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRAppDelegate.m; sourceTree = "<group>"; };
+		3FDCFE6119ADC6540005584E /* michelangelo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = michelangelo.png; sourceTree = "<group>"; };
 		3FEB61511989B65F0032D87E /* STRParserSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRParserSpec.m; sourceTree = "<group>"; };
 		3FEB61541989B77A0032D87E /* STRPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRPost.h; sourceTree = "<group>"; };
 		3FEB61551989B77A0032D87E /* STRPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRPost.m; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 		3FEB61571989B8EC0032D87E /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
+				3FDCFE6119ADC6540005584E /* michelangelo.png */,
 				3F3C80AC1989E0AC00AF36B0 /* posts_404.json */,
 				3FEB61581989B9180032D87E /* posts_success.json */,
 			);
@@ -422,6 +425,7 @@
 				3F123C0919899C8400299EDD /* InfoPlist.strings in Resources */,
 				3F3C80AD1989E0AC00AF36B0 /* posts_404.json in Resources */,
 				3FEB61591989B9180032D87E /* posts_success.json in Resources */,
+				3FDCFE6219ADC6540005584E /* michelangelo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
