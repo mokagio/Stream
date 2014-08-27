@@ -1,5 +1,4 @@
 #import "STRNetworkManager.h"
-#import <AFNetworking.h>
 
 @interface STRNetworkManager ()
 
