@@ -23,13 +23,13 @@ This looks like a rather simple assignment, with a couple of things to verify fi
 
 ### A quick look at the App.net APIs
 
-From the spec we gather that what we need from the [App.net APIs](https://developers.app.net/reference/) is just the endpoint to get a list of all posts. Usually this kind of services don't require authentication for a request of this type, wich is good because it would speedup the development.
+From the spec we gather that what we need from the [App.net APIs](https://developers.app.net/reference/) is just the endpoint to get a list of all posts. Usually this kind of services don't require authentication for a request of this type, which is good because it would speedup the development.
 
-As hoped there is a `GET` endpoint that doesn't require authentication to retrive _the most recent Posts from the Global stream_. [`/posts/stream/global`](https://developers.app.net/reference/resources/post/streams/#retrieve-the-global-stream).
+As hoped there is a `GET` endpoint that doesn't require authentication to retrieve _the most recent Posts from the Global stream_. [`/posts/stream/global`](https://developers.app.net/reference/resources/post/streams/#retrieve-the-global-stream).
 
 The endpoint is also [paginated](https://developers.app.net/reference/make-request/pagination/), which is exactly what we need to implement the "load more" feature.
 
-### How to detect links withing the text of a `UILabel`
+### How to detect links within the text of a `UILabel`
 
 That seems like a Regexp job to me, but how to make only that piece of text interactive? Maybe using a well placed subview? Or hacking around with the touchable area? 
 
@@ -52,7 +52,7 @@ App.net seems to have an [iOS (+ Android) SDK that we could use to load the post
 
 We'll need to make requests to the App.net server. To do this I want to use on AFNetworking. It's simple, robust and well tested. Even if it might seem as an overhead for just a couple of requests, I love the API and it's gonna kickstart my network layer.
 
-AFNetworking also provides the `AFURLResponseSerialization` protocol that we could use to write a custom serializer from the JSON response to our model objects. I am not gonna use this, preffering to write the parsing myself. This way an eventual _unplug_ of AFNetworking would be simpler. This also allows me to _show off_ my approach to testing application logic.
+AFNetworking also provides the `AFURLResponseSerialization` protocol that we could use to write a custom serializer from the JSON response to our model objects. I am not gonna use this, preferring to write the parsing myself. This way an eventual _unplug_ of AFNetworking would be simpler. This also allows me to _show off_ my approach to testing application logic.
 
 As my testing framework, or better stack, I'm gonna use [Specta](https://github.com/specta/specta). I prefer this to XCTest because of the better syntax it has.
 
@@ -60,7 +60,7 @@ I'm gonna do all my views in code. This is probably a controversial topic. My re
 
 ## The development
 
-[This blog post](http://mislav.uniqpath.com/2014/02/hidden-documentation/) I read some time ago inspired me on how to use git to provide extra documentation to the project and it's development. All the details and reasoings behind my implementation can be found in the messages of the commits.
+[This blog post](http://mislav.uniqpath.com/2014/02/hidden-documentation/) I read some time ago inspired me on how to use git to provide extra documentation to the project and it's development. All the details and reasonings behind my implementation can be found in the messages of the commits.
 
 ---
 
@@ -72,7 +72,7 @@ The desire to experiment and _show off_ different approaches probably resulted i
 
 There are some where to go next points form here, code wise:
 
-* Remove AFNetworking completely and just rely on `NSURLSession` **or**
+* Remove AFNetworking completely and just rely on `NSURLSession`. See the [nsurlsession branch](https://github.com/mokagio/Stream/tree/nsurlsession) **or**
 * Push the use of AFNetworking further on with a custom response serializer **or**
 * Use the App.net SDK
 * Use IB for the views rather than the code
@@ -80,7 +80,7 @@ There are some where to go next points form here, code wise:
 * Drop the DateTools pod and implement custom _timeago_ feature
 * Profile the performances
 
-From the app point of view interesting developement could be:
+From the app point of view interesting development could be:
 
 * Add a pull to refresh
 * Provide a "Load more" button to load more posts, rather than doing it automatically. This would make it less _network hungry_
