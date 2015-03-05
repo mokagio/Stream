@@ -31,7 +31,7 @@ It works with `NSURLConnection`, new iOS7/OSX.9's `NSURLSession`, `AFNetworking`
         // Stub it with our "wsresponse.json" stub file
         NSString* fixture = OHPathForFileInBundle(@"wsresponse.json",nil);
         return [OHHTTPStubsResponse responseWithFileAtPath:fixture
-                  statusCode:200 headers:@{@"Content-Type":@"text/json"}];
+                  statusCode:200 headers:@{@"Content-Type":@"application/json"}];
     }];
 
 ### [More examples](https://github.com/AliSoftware/OHHTTPStubs/wiki/Usage-Examples)
@@ -57,6 +57,15 @@ The wiki also contain [some articles that can help you get started](https://gith
 * remove any stubs you installed after each test — to avoid those stubs to still be installed when executing the next Test Case — by calling `[OHHTTPStubs removeAllStubs]` in you `tearDown` method. [see this wiki page for more info](https://github.com/AliSoftware/OHHTTPStubs/wiki/Remove-stubs-after-each-test)
 * be sure to wait until the request has received its response before doing your assertions and letting the test case to finish (like for any asynchronous test). [see this wiki page for more info](https://github.com/AliSoftware/OHHTTPStubs/wiki/OHHTTPStubs-and-asynchronous-tests)
 
+### XCTestExpectation & Xcode 5
+
+To help you with asynchronous tests, you should use the `XCTestExpectation` class.
+
+This class is available in Xcode 6, but if you still compile with Xcode 5, you can **use the `XCTestExpectation` subspec provided by `OHHTTPStubs`** that adds a custom implementation of this `XCTestExpectation` class that **allows you to use it with Xcode 5 too**.
+
+```
+pod 'OHHTTPStubs/XCTestExpectation'
+```
 
 ## Automatic loading
 

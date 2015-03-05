@@ -1,5 +1,0 @@
-#include "Pods-Stream-MBProgressHUD.xcconfig"
-GCC_PREPROCESSOR_DEFINITIONS = COCOAPODS=1
-HEADER_SEARCH_PATHS = "${PODS_ROOT}/BuildHeaders" "${PODS_ROOT}/BuildHeaders/MBProgressHUD" "${PODS_ROOT}/Headers" "${PODS_ROOT}/Headers/AFNetworking" "${PODS_ROOT}/Headers/CocoaLumberjack" "${PODS_ROOT}/Headers/DateTools" "${PODS_ROOT}/Headers/Expecta" "${PODS_ROOT}/Headers/MBProgressHUD" "${PODS_ROOT}/Headers/Masonry" "${PODS_ROOT}/Headers/OHHTTPStubs" "${PODS_ROOT}/Headers/OpenSans" "${PODS_ROOT}/Headers/Specta" "${PODS_ROOT}/Headers/TTTAttributedLabel" "${PODS_ROOT}/Headers/UIAlertView+Blocks" "${PODS_ROOT}/Headers/UIColor+FlatColors"
-OTHER_LDFLAGS = -ObjC ${PODS_STREAM_MBPROGRESSHUD_OTHER_LDFLAGS}
-PODS_ROOT = ${SRCROOT}

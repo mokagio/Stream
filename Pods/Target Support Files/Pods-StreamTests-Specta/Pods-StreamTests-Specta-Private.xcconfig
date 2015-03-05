@@ -1,0 +1,6 @@
+#include "Pods-StreamTests-Specta.xcconfig"
+FRAMEWORK_SEARCH_PATHS = ${PODS_STREAMTESTS_SPECTA_FRAMEWORK_SEARCH_PATHS}
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = "${PODS_ROOT}/Headers/Build" "${PODS_ROOT}/Headers/Build/Specta" "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/AFNetworking" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/DateTools" "${PODS_ROOT}/Headers/Public/Expecta" "${PODS_ROOT}/Headers/Public/MBProgressHUD" "${PODS_ROOT}/Headers/Public/Masonry" "${PODS_ROOT}/Headers/Public/OHHTTPStubs" "${PODS_ROOT}/Headers/Public/OpenSans" "${PODS_ROOT}/Headers/Public/Specta" "${PODS_ROOT}/Headers/Public/TTTAttributedLabel" "${PODS_ROOT}/Headers/Public/UIAlertView+Blocks" "${PODS_ROOT}/Headers/Public/UIColor+FlatColors"
+OTHER_LDFLAGS = ${PODS_STREAMTESTS_SPECTA_OTHER_LDFLAGS} -ObjC
+PODS_ROOT = ${SRCROOT}
